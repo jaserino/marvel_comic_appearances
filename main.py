@@ -38,7 +38,7 @@ def get_request(hash_value):
         "ts": timestamp_str,
         "hash": hash_value,
         "offset": offset,
-        "limit": limit
+        "limit": limit,
     }
 
     try:
@@ -49,12 +49,12 @@ def get_request(hash_value):
         print(f"Error: {e}")
         return None
         
-# making our api request
-data = get_request(hash_value)
-
 #manipulating our response data
 #will constantly pull data
 while True:
+    # making our api request
+    data = get_request(hash_value)
+
     #handling no data returned
     if data is None or not data['data']['results']:
         break
@@ -62,15 +62,28 @@ while True:
     characters = data['data']['results']
 
     for char in characters:
+        char_id = char['id']
         name = char['name']
-        #getting rid of the apostrophe
-        name = name.replace("'",'')
+        #getting rid of the apostrophe and -
+        name = name.replace("-","").replace("'","''")
         description = char['description']
-        description = description.replace("'",'')
+        description = description.replace("-","").replace("'","''")
         resourceURI = char['resourceURI']
         thumbnail = char['thumbnail']['path']+'.'+char['thumbnail']['extension']
         comics = char['comics']['available']
+        results_str = f"'{char_id}','{name}','{description}','{resourceURI}','{thumbnail}','{comics}'"
 
-        results_str = f"{name}**{description}**{resourceURI}**{thumbnail}**{comics}"
+        #inserting into sql
+        sql_query = f"""insert into dbo.characters (name,comics,resourceURI,description,thumbnail,id)values(?,?,?,?,?,?)"""
+        params = (name,comics,resourceURI,description,thumbnail,char_id)
+        try:
+            cursor.execute(sql_query,params)
+            cursor.commit()
+        except Exception as e:
+            print(e)
 
-        print(results_str)
+    #incrementing our offset each time this runs
+    offset += limit
+    print(f"Complete {offset}")
+    
+    
