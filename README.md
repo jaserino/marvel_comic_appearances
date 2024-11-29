@@ -56,7 +56,18 @@ This project pulls Marvel character data using the Marvel API, processes the dat
 
 5. Configure **SSIS** and **SSRS**:
    - Set up an **SSIS package** to handle ETL processes, including data import from the Marvel API and transformations.
+   - Used conditional split to exclude all characters under 50 appearances.
+   - Used sort to return the results in descending order.
    - Use **SSRS** to create reports that visualize stored character data, such as comic appearances or descriptions.
+
+#### Data Flow Diagram
+
+![Data Flow Diagram](screenshots/data_flow_diagram.png)
+
+#### Transformation Details
+
+![Transformations](screenshots/transformations.png)
+![Transformations](screenshots/sort.png)
 
 ---
 
