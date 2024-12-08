@@ -72,35 +72,45 @@ This project pulls Marvel character data using the Marvel API, processes the dat
    - Create 4 separate reports using bar charts to visualize our data
    - Add filters to each report to only pull characters between certain ranges for each report eg. [comic_appearances] >= 500
 
-#### Transformation Details
+# Database tables
+
+## Heres our intial database returned from the API that we will send to SSIS for transformation
+
+![Transformations](screenshots/Database/initial_db.png)
+
+## Heres our clean data after the transformation that we will send to SSRS for reporting
+
+![Transformations](screenshots/Database/cleaned_db.png)
+
+# Transformation Details
 
 ## Returning characters with more than 100 comic book appearances
 
-![Transformations](screenshots/transformations.png)
+![Transformations](screenshots/SSIS/transformations.png)
 
 ## Sorting our data in descending order
 
-![Transformations](screenshots/sort.png)
+![Transformations](screenshots/SSIS/sort.png)
 
-#### Entire Data Flow Diagram
+## Entire Data Flow Diagram
 
-![Data Flow Diagram](screenshots/data_flow_diagram.png)
+![Data Flow Diagram](screenshots/SSIS/data_flow_diagram.png)
 
-#### Generated Reports
+## Generated Reports
 
-## 500 -> 5000 Comic Appearances
+#### 500 -> 5000 Comic Appearances
 
 ![Transformations](screenshots/Reports/500.png)
 
-## 250 -> 499 Comic Appearances
+#### 250 -> 499 Comic Appearances
 
 ![Transformations](screenshots/Reports/250.png)
 
-## 140 -> 249 Comic Appearances
+#### 140 -> 249 Comic Appearances
 
 ![Transformations](screenshots/Reports/140.png)
 
-## 100 -> 139 Comic Appearances
+#### 100 -> 139 Comic Appearances
 
 ![Transformations](screenshots/Reports/100.png)
 
