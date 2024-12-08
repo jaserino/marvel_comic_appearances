@@ -54,12 +54,11 @@ This project pulls Marvel character data using the Marvel API, processes the dat
    - Run the script in your SQL Server Management Studio (SSMS) or any SQL client to create the required database table.
    - Note: This script assumes you already have a database created. You can create one with `CREATE DATABASE Marvel;` if necessary.
 
-5. Configure **SSIS** and **SSRS**:
+5. Configure **SSIS**:
 
    - Set up an **SSIS package** to handle ETL processes, including data import from the Marvel API and transformations.
    - Used conditional split to exclude all characters under 50 appearances.
    - Used sort to return the results in descending order.
-   - Use **SSRS** to create reports that visualize stored character data, such as comic appearances or descriptions.
 
 6. Set up your SQL Server table for transformed data:
 
@@ -67,14 +66,43 @@ This project pulls Marvel character data using the Marvel API, processes the dat
    - Run the script in your SQL Server Management Studio (SSMS) or any SQL client to create the required database table.
    - Create a destination assistant in SSIS to send the transformed data back to SQL server.
 
-#### Data Flow Diagram
+7. Configure **SSRS**:
 
-![Data Flow Diagram](screenshots/data_flow_diagram.png)
+   - Use **SSRS** to create reports that visualize stored character data, such as comic appearances or descriptions.
+   - Create 4 separate reports using bar charts to visualize our data
+   - Add filters to each report to only pull characters between certain ranges for each report eg. [comic_appearances] >= 500
 
 #### Transformation Details
 
+## Returning characters with more than 100 comic book appearances
+
 ![Transformations](screenshots/transformations.png)
+
+## Sorting our data in descending order
+
 ![Transformations](screenshots/sort.png)
+
+#### Entire Data Flow Diagram
+
+![Data Flow Diagram](screenshots/data_flow_diagram.png)
+
+#### Generated Reports
+
+## 500 -> 5000 Comic Appearances
+
+![Transformations](screenshots/Reports/500.png)
+
+## 250 -> 499 Comic Appearances
+
+![Transformations](screenshots/Reports/250.png)
+
+## 140 -> 249 Comic Appearances
+
+![Transformations](screenshots/Reports/140.png)
+
+## 100 -> 139 Comic Appearances
+
+![Transformations](screenshots/Reports/100.png)
 
 ---
 
