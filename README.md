@@ -86,15 +86,15 @@ This project pulls Marvel character data using the Marvel API, processes the dat
 
 ## Returning characters with more than 100 comic book appearances
 
-![Transformations](screenshots/SSIS/transformations.png)
+![Transformations](screenshots/SSIS_SS/transformations.png)
 
 ## Sorting our data in descending order
 
-![Transformations](screenshots/SSIS/sort.png)
+![Transformations](screenshots/SSIS_SS/sort.png)
 
 ## Entire Data Flow Diagram
 
-![Data Flow Diagram](screenshots/SSIS/data_flow_diagram.png)
+![Data Flow Diagram](screenshots/SSIS_SS/data_flow_diagram.png)
 
 ## Generated Reports
 
