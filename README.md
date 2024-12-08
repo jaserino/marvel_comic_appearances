@@ -55,10 +55,17 @@ This project pulls Marvel character data using the Marvel API, processes the dat
    - Note: This script assumes you already have a database created. You can create one with `CREATE DATABASE Marvel;` if necessary.
 
 5. Configure **SSIS** and **SSRS**:
+
    - Set up an **SSIS package** to handle ETL processes, including data import from the Marvel API and transformations.
    - Used conditional split to exclude all characters under 50 appearances.
    - Used sort to return the results in descending order.
    - Use **SSRS** to create reports that visualize stored character data, such as comic appearances or descriptions.
+
+6. Set up your SQL Server table for transformed data:
+
+   - Open the `sql/characters_clean.sql` file in this repository.
+   - Run the script in your SQL Server Management Studio (SSMS) or any SQL client to create the required database table.
+   - Create a destination assistant in SSIS to send the transformed data back to SQL server.
 
 #### Data Flow Diagram
 
